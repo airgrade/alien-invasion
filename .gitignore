@@ -1,0 +1,9 @@
+#ignore python virtual environment
+alien/
+.env/
+
+#ignore python cache
+__pycache__/
+
+#ignore python dependencies
+.pyc
