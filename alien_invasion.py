@@ -57,7 +57,7 @@ class AlienInvasion:
             sys.exit()
         #key to fire bullets
         elif event.key == pygame.K_SPACE:
-            self._fire_bullet()
+            self._fire_bullets()
             
     def _check_keyup_events(self, event):
         '''Respond to keyreleases'''
@@ -70,13 +70,13 @@ class AlienInvasion:
         '''Create a new bullet and it to the bullets group'''
         new_bullet = Bullet(self)
         self.bullets.add(new_bullet)
-                        
-                        
-                        
-    
+   
     def _update_screen(self):
         '''Updates images on the new screen, and flip to the new screen'''
         self.screen.fill(self.settings.bg_color)
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
+            
         self.ship.blitme()
         
         pygame.display.flip()
