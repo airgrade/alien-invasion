@@ -31,6 +31,7 @@ class AlienInvasion:
             
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()                       
             self.clock.tick(60) #helps to run the game more consistently in most systems
 
@@ -54,6 +55,9 @@ class AlienInvasion:
             self.ship.moving_left = True
         elif event.key == pygame.K_q:
             sys.exit()
+        #key to fire bullets
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
             
     def _check_keyup_events(self, event):
         '''Respond to keyreleases'''
@@ -61,7 +65,11 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
-            
+    
+    def _fire_bullets(self):
+        '''Create a new bullet and it to the bullets group'''
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
                         
                         
                         
