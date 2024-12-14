@@ -32,6 +32,12 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.bullets.update()
+            
+            #Get rid of bullets that have dissappeared
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            print(len(self.bullets))
             self._update_screen()                       
             self.clock.tick(60) #helps to run the game more consistently in most systems
 
